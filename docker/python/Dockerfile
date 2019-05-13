@@ -10,7 +10,8 @@ RUN apt-get update -y --fix-missing \
     xz-utils \
     file \
     patch \
-    locales
+    locales \
+    fonts-ipafont
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -42,7 +43,42 @@ RUN cd /tmp \
     && rm -rf /tmp/mecab-ipadic-neologd \
     && ldconfig
 
+RUN cd /tmp \
+    && curl -L -o CRF++-0.58.tar.gz 'https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7QVR6VXJ5dWExSTQ' \
+    && tar zxf CRF++-0.58.tar.gz \
+    && cd CRF++-0.58 \
+    && ./configure \
+    && make \
+    && make install \
+    && cd / \
+    && rm /tmp/CRF++-0.58.tar.gz \
+    && rm -rf /tmp/CRF++-0.58 \
+    && ldconfig
+
+RUN cd /tmp \
+    && DOWNLOAD_URL="https://drive.google.com`curl -c cookies.txt \
+        'https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7SDd1Q1dUQkZQaUU' \
+        | sed -r 's/\"/\n/g' | grep id=0B4y35FiV1wh7SDd1Q1dUQkZQaUU | grep confirm | sed 's/&amp;/\&/g'`" \
+    && curl -L -b cookies.txt -o /tmp/cabocha-0.69.tar.bz2 "$DOWNLOAD_URL" \
+    && tar jxf cabocha-0.69.tar.bz2 \
+    && cd cabocha-0.69 \
+    && export CPPFLAGS=-I/usr/local/include \
+    && ./configure --with-mecab-config=`which mecab-config` --with-charset=utf8 \
+    && make \
+    && make install \
+    && cd python \
+    && python setup.py build \
+    && python setup.py install \
+    && cd / \
+    && rm /tmp/cabocha-0.69.tar.bz2 \
+    && rm -rf /tmp/cabocha-0.69 \
+    && rm /tmp/cookies.txt \
+    && ldconfig
+
 COPY ./docker/python/etc/mecabrc /usr/local/etc/
+COPY ./docker/python/etc/cabocharc /usr/local/etc/
+
+RUN apt-get install -y --no-install-recommends graphviz
 
 WORKDIR /usr/src/source
 

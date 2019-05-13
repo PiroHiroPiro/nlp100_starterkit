@@ -10,6 +10,7 @@ jupyter = "*"
 requests = "*"
 matplotlib = "*"
 japanize-matplotlib = "*"
+pydot-ng = "*"
 
 [requires]
 python_version = "3.7"
