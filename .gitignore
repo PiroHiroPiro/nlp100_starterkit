@@ -248,3 +248,4 @@ $RECYCLE.BIN/
 
 # Custom ignore
 .idea
+source/ch3/jawiki-country.json.gz
