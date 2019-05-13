@@ -22,8 +22,6 @@ RUN echo "ja_JP.UTF-8 UTF-8" > /etc/locale.gen \
 ENV LC_ALL=ja_JP.UTF-8
 ENV LANG=ja_JP.UTF8
 
-RUN apt-get install -y --no-install-recommends graphviz
-
 WORKDIR /usr/src/source
 
 ENV PIPENV_VENV_IN_PROJECT=1
