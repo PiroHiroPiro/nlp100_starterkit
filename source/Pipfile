@@ -11,6 +11,9 @@ requests = "*"
 matplotlib = "*"
 japanize-matplotlib = "*"
 pydot-ng = "*"
+nltk = "*"
+scikit-learn = "*"
+seaborn = "*"
 
 [requires]
 python_version = "3.7"
