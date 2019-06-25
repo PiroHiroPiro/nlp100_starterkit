@@ -249,3 +249,6 @@ $RECYCLE.BIN/
 # Custom ignore
 .idea
 source/ch3/jawiki-country.json.gz
+source/ch9/*
+!source/ch9/question.ipynb
+!source/ch9/english_country_name.csv
