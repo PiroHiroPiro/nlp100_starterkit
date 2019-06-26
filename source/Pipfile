@@ -18,6 +18,7 @@ pandas = "*"
 joblib = "*"
 scipy = "*"
 gensim = "*"
+
 [requires]
 python_version = "3.7"
 
