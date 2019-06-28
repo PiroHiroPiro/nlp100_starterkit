@@ -1,13 +1,13 @@
 # Starterkit for NLP100
 
-A repository for learning [NLP100](http://www.cl.ecei.tohoku.ac.jp/nlp100/).
+[言語処理100本ノック](http://www.cl.ecei.tohoku.ac.jp/nlp100/)を解くのに必要なライブラリ諸々が入ったDocker環境を提供します.
 
 ## Requirement
 
 - [Docker](https://www.docker.com/)
   - docker-compose
 
-## Usage
+## 使い方
 
 Run Jupyter notebook:
 
@@ -17,7 +17,7 @@ $ docker-compose up
 
 Go to `http://localhost:8890` and you'll see the notebooks.
 
-## Install
+## 準備
 
 Clone repository:
 
