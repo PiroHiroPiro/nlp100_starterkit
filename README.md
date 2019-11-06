@@ -2,6 +2,8 @@
 
 [言語処理100本ノック](http://www.cl.ecei.tohoku.ac.jp/nlp100/)を解くのに必要なライブラリ諸々が入ったDocker環境を提供します.
 
+Chapter6, 7に関しては, より良いライブラリが登場していることや自然言語に関係ないことから環境を提供していません.
+
 ## Requirement
 
 - [Docker](https://www.docker.com/)
